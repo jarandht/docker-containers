@@ -1,0 +1,72 @@
+version: '3.3'
+
+services:
+  # Database
+  db: 
+    image: mysql 
+    restart: always  
+    container_name: php-mysql 
+    volumes:
+      - php_db_data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: 
+      MYSQL_DATABASE: php
+      MYSQL_USER: php
+      MYSQL_PASSWORD: 
+    networks:
+      - db_network
+    ports:
+      - '3306:3306'
+  # phpmyadmin
+  phpmyadmin:
+    depends_on:
+      - db
+    image: phpmyadmin/phpmyadmin
+    container_name: php-phpmyadmin
+    restart: always
+    ports:
+      - '8080:80'
+    environment:
+      PMA_HOST: db
+      MYSQL_ROOT_PASSWORD:  
+    networks:
+      - db_network
+  # apace
+  apache:
+    depends_on:
+      - db
+    image: php:8.0-apache   
+    container_name: php-apache
+    build:
+      context: /home/data/php/php
+      dockerfile: Dockerfile
+    ports:
+      - '80:80'
+    restart: always
+    volumes:
+      - /home/data/php/php/src:/var/www/html/
+    networks:
+      - db_network
+  #code-server
+  code-server:
+    image: lscr.io/linuxserver/code-server:latest
+    restart: always
+    container_name: php-code-server
+    ports:
+      - '8000:8443'
+    volumes: 
+      - /home/data/php/php:/config/workspace
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Oslo
+      - PASSWORD=
+      - HASHED_PASSWORD= #optional
+      - SUDO_PASSWORD=
+      - SUDO_PASSWORD_HASH= #optional
+      - PROXY_DOMAIN=
+      - DEFAULT_WORKSPACE=/config/workspace #optional
+networks: 
+  db_network:
+volumes: 
+  php_db_data:

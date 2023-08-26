@@ -1,0 +1,27 @@
+  version: '3.3'
+
+  services:
+    #code-server
+    code-server:
+      image: lscr.io/linuxserver/code-server:latest
+      restart: always
+      container_name: code-server
+      build:
+        context: ./
+        dockerfile: Dockerfile
+      ports:
+        - '8004:8443'
+        - '8005:3000'
+      volumes: 
+        - ./workspace:/config/workspace
+        - barcaguys:/config
+      environment:
+        - PUID=1000
+        - PGID=1000
+        - TZ=Europe/Oslo  
+        - PASSWORD=
+        - SUDO_PASSWORD=
+        - PROXY_DOMAIN=
+        - DEFAULT_WORKSPACE=/config/workspace #optional
+  volumes: 
+    barcaguys:

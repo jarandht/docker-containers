@@ -1,0 +1,15 @@
+version: '3.3'
+
+services:
+  frontend: 
+    image: node:18-slim 
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    restart: unless-stopped  
+    container_name: frontend
+    volumes:
+      - ./data:/data
+    ports:
+      - '3000:3000'
+

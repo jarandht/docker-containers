@@ -1,0 +1,16 @@
+version: '3'
+services:
+  puffer:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    container_name: puffer
+    image: pufferpanel/pufferpanel:latest
+    volumes:
+      - pufferpanel-config:/etc/pufferpanel
+    restart: unless-stopped
+    ports:
+      - '8080:8080'
+      - '5657:5657'
+volumes:
+  pufferpanel-config:

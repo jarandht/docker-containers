@@ -1,0 +1,25 @@
+docker run -d --restart unless-stopped --name jarand.site -p 5010:80 -v /home/data/jarand.site:/usr/local/apache2/htdocs/ httpd:latest
+
+docker run -d --restart unless-stopped --name img.gamehub.community -p 8000:80 -v /home/data/img.gamehub.community:/usr/local/apache2/htdocs/ httpd:latest --force-recreate
+
+wget --recursive --no-parent https://img.gamehub.community/
+
+ssh-keygen -t ed25519 -f ssh_host_ed25519_key < /dev/null
+ssh-keygen -t rsa -b 4096 -f ssh_host_rsa_key < /dev/nulll
+
+docker run -d \
+  --name=code-server \
+  -e PUID=1000 \
+  -e PGID=1000 \
+  -e TZ=Europe/Oslo \
+  -e PASSWORD=
+  -e HASHED_PASSWORD= `#optional` \
+  -e SUDO_PASSWORD=
+  -e SUDO_PASSWORD_HASH= `#optional` \
+  -e PROXY_DOMAIN=code-server.my.domain `#optional` \
+  -e DEFAULT_WORKSPACE=/config/workspace `#optional` \
+  -p 8001:8443 \
+  -p 8002:3000 \
+  -v /home/data/gamehub.community/:/config/workspace/web \
+  --restart unless-stopped \
+  lscr.io/linuxserver/code-server:latest

@@ -1,0 +1,1 @@
+sudo docker run -d --name=dashboard-code-server -e TZ=Europe/Oslo -e PASSWORD=-e SUDO_PASSWORD= -e DEFAULT_WORKSPACE=/config/workspace -p 8443:8443 -p 3001:3001 -p 3000:3000 -v /home/jarand/dashboard-code-server:/config/workspace --restart unless-stopped lscr.io/linuxserver/code-server:latest

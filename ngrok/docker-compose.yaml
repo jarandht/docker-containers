@@ -1,0 +1,10 @@
+version: '3'
+services:
+  ngrok:
+    command: ngrok tcp 10.0.0.35:25565
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    container_name: ngrok
+    image: ubuntu
+    restart: unless-stopped

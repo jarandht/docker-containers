@@ -1,0 +1,10 @@
+version: '3'
+services:
+  playit:
+    command: systemctl start playit
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    container_name: playit
+    image: ubuntu
+    restart: unless-stopped

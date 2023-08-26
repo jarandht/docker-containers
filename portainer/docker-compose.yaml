@@ -1,0 +1,12 @@
+version: '3.3'
+
+services:
+  # Database
+  db: 
+    image: portainer/portainer-ce:latest 
+    restart: unless-stopped  
+    container_name: portainer
+    volumes:
+      - ./data:/data
+    ports:
+      - '8000:9443'

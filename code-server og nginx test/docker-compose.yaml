@@ -1,0 +1,15 @@
+version: '3'
+services:
+  code-server:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    container_name: code-server
+    image: linuxserver/code-server:latest
+  nginx:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    container_name: nginx
+    image: nginx:latest
+  

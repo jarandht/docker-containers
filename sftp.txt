@@ -1,0 +1,29 @@
+version: '3.7'
+
+services:
+  sftp:
+    image: ${SFTP_IMAGE}:${SFTP_VERSION}
+    container_name: sftp
+    restart: always
+    expose:
+      - "${SFTP_PORT}:22"
+    ports:
+      - "${SFTP_PORT}:22"
+    command:
+      - ${SFTP_USERNAME}:${SFTP_PASSWORD}:1001::${DATA_STORE}   # syntax: user:password[:e][:uid[:gi>
+    volumes:
+      - ./${DATA_STORE}:/home/${DATA_STORE}
+      - ./keys/ssh_host_rsa_key.pub:/home/${DATA_STORE}
+      - ./keys/ssh_host_ed25519_key.pub:/home/${DATA_STORE}
+
+docker compose up -d
+
+SFTP_IMAGE=atmoz/sftp
+SFTP_VERSION=latest
+SFTP_USERNAME=
+SFTP_PASSWORD=
+SFTP_PORT=2222
+DATA_STORE=data
+
+ssh-keygen -t ed25519 -f ssh_host_ed25519_key < /dev/null
+ssh-keygen -t rsa -b 4096 -f ssh_host_rsa_key < /dev/nulll
