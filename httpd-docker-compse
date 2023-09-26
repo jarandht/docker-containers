@@ -2,7 +2,7 @@ version: '3'
 services:
   httpd:
     container_name: httpd
-    image: ubuntu
+    image: httpd:latest
     restart: unless-stopped
     ports:
       - "80:80"
