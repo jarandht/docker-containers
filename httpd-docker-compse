@@ -1,0 +1,11 @@
+version: '3'
+services:
+  httpd:
+    container_name: httpd
+    image: ubuntu
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    volumes: 
+      - /source:/usr/local/apache2/htdocs/
+      
