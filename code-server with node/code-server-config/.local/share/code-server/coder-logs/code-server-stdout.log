@@ -1,0 +1,15 @@
+[2023-10-10T18:11:35.442Z] info  code-server 4.9.1 f7989a4dfcf21085e52157a01924d79d708bcc05
+[2023-10-10T18:11:35.443Z] info  Using user-data-dir ~/data
+[2023-10-10T18:11:35.458Z] info  Using config file ~/.config/code-server/config.yaml
+[2023-10-10T18:11:35.458Z] info  HTTP server listening on http://0.0.0.0:8443/ 
+[2023-10-10T18:11:35.458Z] info    - Authentication is disabled 
+[2023-10-10T18:11:35.458Z] info    - Not serving HTTPS 
+[20:11:54] 
+
+
+
+
+[20:11:54] Extension host agent started.
+[20:11:56] [172.19.0.1][2dd15888][ManagementConnection] New connection established.
+[20:11:56] [172.19.0.1][351aac45][ExtensionHostConnection] New connection established.
+[20:11:56] [172.19.0.1][351aac45][ExtensionHostConnection] <212> Launched Extension Host Process.

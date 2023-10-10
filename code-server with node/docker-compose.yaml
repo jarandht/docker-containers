@@ -1,0 +1,24 @@
+version: '3.3'
+
+services:
+  #code-server
+  code-server:
+    image: lscr.io/linuxserver/code-server:latest
+    restart: always
+    container_name: code-server
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    ports:
+      - '8443:8443'
+      - '3000:3000'
+      - '3001:3001'
+    volumes:
+      - ./data:/config/workspace
+      - ./code-server-config:/config
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Oslo
+      - PASSWORD=
+      - DEFAULT_WORKSPACE=/config/workspace 
