@@ -1,9 +1,0 @@
-2023-10-10 20:11:54.758 [info] 
-
-
-
-
-2023-10-10 20:11:54.759 [info] Extension host agent started.
-2023-10-10 20:11:56.067 [info] [172.19.0.1][2dd15888][ManagementConnection] New connection established.
-2023-10-10 20:11:56.740 [info] [172.19.0.1][351aac45][ExtensionHostConnection] New connection established.
-2023-10-10 20:11:56.747 [info] [172.19.0.1][351aac45][ExtensionHostConnection] <212> Launched Extension Host Process.
