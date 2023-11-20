@@ -1,0 +1,10 @@
+version: '3.3'
+
+services:
+  youtube-dl:
+    image: kmb32123/youtube-dl-server
+    ports:
+      - '8080:8080'
+    restart: unless-stopped
+    volumes:
+      - ./data:/youtube-dl

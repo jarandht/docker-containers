@@ -1,0 +1,7 @@
+volumes:
+  TNS_L:
+    driver: local
+    driver_opts:
+      type: nfs
+      o: "addr=truenas.home,rw,nfsvers=4"
+      device: ":/mnt/main/dev"
