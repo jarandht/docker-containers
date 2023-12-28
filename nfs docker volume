@@ -1,7 +1,29 @@
 volumes:
-  TNS_L:
+  truenas:
     driver: local
     driver_opts:
       type: nfs
-      o: "addr=truenas.home,rw,nfsvers=4"
-      device: ":/mnt/main/dev"
+      o: "addr={server ip},rw,nfsvers=4"
+      device: ":{dataset path}"
+
+# set uid and gid for nfs user
+user: "3000:3000"
+
+# example
+version: '3.3'
+services:
+  container:
+    image: imgae
+    ports:
+      - '8010:8080'
+    restart: unless-stopped
+    volumes:
+      - 'truenas:/data'
+    user: "3000:3000"
+volumes:
+  truenas:
+    driver: local
+    driver_opts:
+      type: nfs
+      o: "addr={server ip},rw,nfsvers=4"
+      device: ":{dataset path}"
