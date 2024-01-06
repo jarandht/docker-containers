@@ -1,0 +1,14 @@
+services:
+  my-service:
+    volumes:
+      - nas-share:/container-path
+
+volumes:
+  nas-share:
+    driver_opts:
+      type: cifs
+      o: "username=[username],password=[password]"
+      device: "//my-nas/share"
+
+
+# THis works badly with a lot may end in unusable storage volumes. Then use nfs instad :)
