@@ -1,0 +1,23 @@
+services:
+  netbootxyz:
+    image: lscr.io/linuxserver/netbootxyz:latest
+    container_name: netbootxyz
+    environment:
+      - PUID=3001
+      - PGID=3001
+      - TZ=Etc/UTC
+    volumes:
+      - ./config:/config
+      - TNS_L:/assets
+    ports:
+      - 8050:3000
+      - 8051:80
+      - 69:69/udp
+    restart: always
+volumes:
+  TNS_L:
+    driver: local
+    driver_opts:
+      type: nfs
+      o: "addr=10.0.0.199,rw,nfsvers=4"
+      device: ":/mnt/main/shared/ISO"

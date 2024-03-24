@@ -7,7 +7,7 @@ volumes:
       device: ":{dataset path}"
 
 # set uid and gid for nfs user
-user: "3000:3000"
+  user: "3000:3000"
 
 # example
 version: '3.3'

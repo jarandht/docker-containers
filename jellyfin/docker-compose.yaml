@@ -1,0 +1,30 @@
+version: "2.1"
+services:
+  jellyfin:
+    image: lscr.io/linuxserver/jellyfin:latest
+    container_name: jellyfin
+    environment:
+      - PUID=3005
+      - PGID=3005
+      - TZ=Etc/UTC
+    volumes:
+      - TNS_L_CONF:/config
+      - TNS_L_MEDIA:/data
+    ports:
+      - 8050:8096
+#      - 8920:8920 #optional
+#      - 7359:7359/udp #optional
+#      - 1900:1900/udp #optional
+    restart: unless-stopped
+volumes:
+  TNS_L_CONF:
+    driver: local
+    driver_opts:
+      type: nfs
+      o: "addr=10.0.0.199,rw,nfsvers=4"
+      device: ":/mnt/main/docker/jellyfin"
+  TNS_L_MEDIA:
+    driver_opts:
+      type: cifs
+      o: "username=,password="
+      device: "//10.0.0.199/media"

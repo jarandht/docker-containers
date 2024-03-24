@@ -1,0 +1,220 @@
+INFO: 14-Mar-24 16:27:58 	Database connection established.
+INFO: 14-Mar-24 16:27:58 	Context impl SQLiteImpl.
+INFO: 14-Mar-24 16:27:58 	Will assume non-transactional DDL.
+INFO: 14-Mar-24 16:27:58 	Migration needed. Performing migration...
+INFO: 14-Mar-24 16:27:58 	Context impl SQLiteImpl.
+INFO: 14-Mar-24 16:27:58 	Will assume non-transactional DDL.
+INFO: 14-Mar-24 16:27:58 	Running upgrade  -> 6b0f5f32d602, Initial tables
+INFO: 14-Mar-24 16:28:00 	Running upgrade 6b0f5f32d602 -> 263dd6707191, convert quantity from integer to float
+INFO: 14-Mar-24 16:28:00 	Running upgrade 263dd6707191 -> f1a2dbee5fe9, Add original_text column to recipes_ingredients
+INFO: 14-Mar-24 16:28:00 	Running upgrade f1a2dbee5fe9 -> 59eb59135381, add tags to cookbooks
+INFO: 14-Mar-24 16:28:00 	Running upgrade 59eb59135381 -> 09dfc897ad62, add require_all for cookbook filters
+INFO: 14-Mar-24 16:28:00 	Running upgrade 09dfc897ad62 -> ab0bae02578f, Add use_abbreviation column to ingredients
+INFO: 14-Mar-24 16:28:00 	Running upgrade ab0bae02578f -> f30cf048c228, add new webhook fields
+INFO: 14-Mar-24 16:28:00 	Running upgrade f30cf048c228 -> 188374910655, add login_attemps and locked_at field to user table
+INFO: 14-Mar-24 16:28:01 	Running upgrade 188374910655 -> 089bfa50d0ed, Add is_ocr_recipe column to recipes
+INFO: 14-Mar-24 16:28:01 	Running upgrade 089bfa50d0ed -> 44e8d670719d, add extras to shopping lists, list items, and ingredient foods
+INFO: 14-Mar-24 16:28:01 	Running upgrade 44e8d670719d -> 2ea7a807915c, add recipe_timeline_events table
+INFO: 14-Mar-24 16:28:01 	Running upgrade 2ea7a807915c -> 1923519381ad, added recipe last made timestamp
+INFO: 14-Mar-24 16:28:01 	Running upgrade 1923519381ad -> 167eb69066ad, add recipe_scale to shopping list item ref
+INFO: 14-Mar-24 16:28:01 	Running upgrade 167eb69066ad -> 165d943c64ee, add related user to mealplan
+INFO: 14-Mar-24 16:28:01 	Running upgrade 165d943c64ee -> ff5f73b01a7a, add missing foreign key and order indices
+INFO: 14-Mar-24 16:28:03 	Running upgrade ff5f73b01a7a -> 16160bf731a0, add more indices necessary for search
+INFO: 14-Mar-24 16:28:03 	Running upgrade 16160bf731a0 -> 5ab195a474eb, add normalized search properties
+INFO: 14-Mar-24 16:28:03 	Running upgrade 5ab195a474eb -> b04a08da2108, added shopping list label settings
+INFO: 14-Mar-24 16:28:04 	Running upgrade b04a08da2108 -> 38514b39a824, add auth_method to user table
+INFO: 14-Mar-24 16:28:04 	Running upgrade 38514b39a824 -> b3dbb554ba53, postgres fuzzy search
+INFO: 14-Mar-24 16:28:04 	Running upgrade b3dbb554ba53 -> 04ac51cbe9a4, added group slug
+INFO: 14-Mar-24 16:28:04 	Running upgrade 04ac51cbe9a4 -> 1825b5225403, added recipe note to shopping list recipe ref
+INFO: 14-Mar-24 16:28:04 	Running upgrade 1825b5225403 -> bcfdad6b7355, remove tool name and slug unique contraints
+INFO: 14-Mar-24 16:28:04 	Running upgrade bcfdad6b7355 -> 0341b154f79a, added normalized unit and food names
+INFO: 14-Mar-24 16:28:04 	Running upgrade 0341b154f79a -> dded3119c1fe, added unique constraints
+INFO: 14-Mar-24 16:28:05 	Running upgrade dded3119c1fe -> ba1e4a6cfe99, added plural names and alias tables for foods and units
+INFO: 14-Mar-24 16:28:05 	Running upgrade ba1e4a6cfe99 -> 2298bb460ffd, added user to shopping list
+INFO: 14-Mar-24 16:28:05 	Checking for migration data fixes
+WARNING: 14-Mar-24 16:28:05 	"get_all" method is deprecated; use "page_all" instead
+INFO: 14-Mar-24 16:28:05 	Database contains no users, initializing...
+INFO: 14-Mar-24 16:28:05 	Generating Default Group
+INFO: 14-Mar-24 16:28:05 	Generating Default User
+INFO: 14-Mar-24 16:28:15 	-----SYSTEM STARTUP----- 
+
+INFO: 14-Mar-24 16:28:15 	------APP SETTINGS------
+INFO: 14-Mar-24 16:28:15 	{
+    "theme": {
+        "light_primary": "#E58325",
+        "light_accent": "#007A99",
+        "light_secondary": "#973542",
+        "light_success": "#43A047",
+        "light_info": "#1976D2",
+        "light_warning": "#FF6D00",
+        "light_error": "#EF5350",
+        "dark_primary": "#E58325",
+        "dark_accent": "#007A99",
+        "dark_secondary": "#973542",
+        "dark_success": "#43A047",
+        "dark_info": "#1976D2",
+        "dark_warning": "#FF6D00",
+        "dark_error": "#EF5350"
+    },
+    "PRODUCTION": true,
+    "BASE_URL": "http://localhost:8080",
+    "STATIC_FILES": "/spa/static",
+    "IS_DEMO": false,
+    "API_PORT": 9000,
+    "API_DOCS": true,
+    "TOKEN_TIME": 48,
+    "LOG_LEVEL": "INFO",
+    "GIT_COMMIT_HASH": "b54cdf642505bcb63384bddcc21f15d751c2f85b",
+    "ALLOW_SIGNUP": false,
+    "SECURITY_MAX_LOGIN_ATTEMPTS": 5,
+    "SECURITY_USER_LOCKOUT_TIME": 24,
+    "DB_ENGINE": "sqlite",
+    "DEFAULT_GROUP": "Home",
+    "SMTP_HOST": null,
+    "SMTP_PORT": "587",
+    "SMTP_FROM_NAME": "Mealie",
+    "SMTP_FROM_EMAIL": null,
+    "SMTP_AUTH_STRATEGY": "TLS",
+    "LDAP_AUTH_ENABLED": false,
+    "LDAP_SERVER_URL": null,
+    "LDAP_TLS_INSECURE": false,
+    "LDAP_TLS_CACERTFILE": null,
+    "LDAP_ENABLE_STARTTLS": false,
+    "LDAP_BASE_DN": null,
+    "LDAP_QUERY_BIND": null,
+    "LDAP_QUERY_PASSWORD": null,
+    "LDAP_USER_FILTER": null,
+    "LDAP_ADMIN_FILTER": null,
+    "LDAP_ID_ATTRIBUTE": "uid",
+    "LDAP_MAIL_ATTRIBUTE": "mail",
+    "LDAP_NAME_ATTRIBUTE": "name",
+    "TESTING": false
+}
+INFO: 14-Mar-24 16:31:46 	HTTP Request: GET https://www.tine.no/oppskrifter/middag-og-hovedretter/pizza-og-pai/enkel-og-rask-hverdagspizza "HTTP/1.1 200 OK"
+INFO: 14-Mar-24 16:31:46 	Image URL: ['https://www.tine.no/_/recipeimage/w_1080,h_1080,c_fill,x_3285,y_1848,g_xy_center/recipeimage/fuzb5stxs2skncze76rp.jpg', 'https://www.tine.no/_/recipeimage/w_1440,h_1080,c_fill,x_3285,y_1848,g_xy_center/recipeimage/fuzb5stxs2skncze76rp.jpg', 'https://www.tine.no/_/recipeimage/w_1600,h_900,c_fill,x_3285,y_1848,g_xy_center/recipeimage/fuzb5stxs2skncze76rp.jpg']
+INFO: 14-Mar-24 16:31:46 	HTTP Request: HEAD https://www.tine.no/_/recipeimage/w_1440,h_1080,c_fill,x_3285,y_1848,g_xy_center/recipeimage/fuzb5stxs2skncze76rp.jpg "HTTP/1.1 200 OK"
+INFO: 14-Mar-24 16:31:46 	HTTP Request: HEAD https://www.tine.no/_/recipeimage/w_1600,h_900,c_fill,x_3285,y_1848,g_xy_center/recipeimage/fuzb5stxs2skncze76rp.jpg "HTTP/1.1 200 OK"
+INFO: 14-Mar-24 16:31:46 	HTTP Request: HEAD https://www.tine.no/_/recipeimage/w_1080,h_1080,c_fill,x_3285,y_1848,g_xy_center/recipeimage/fuzb5stxs2skncze76rp.jpg "HTTP/1.1 200 OK"
+ERROR: 14-Mar-24 16:31:46 	Fatal Image Request Exception
+Traceback (most recent call last):
+  File "/opt/pysetup/.venv/lib/python3.10/site-packages/httpx/_transports/default.py", line 69, in map_httpcore_exceptions
+    yield
+  File "/opt/pysetup/.venv/lib/python3.10/site-packages/httpx/_transports/default.py", line 373, in handle_async_request
+    resp = await self._pool.handle_async_request(req)
+  File "/opt/pysetup/.venv/lib/python3.10/site-packages/httpcore/_async/connection_pool.py", line 215, in handle_async_request
+    raise UnsupportedProtocol(
+httpcore.UnsupportedProtocol: Request URL is missing an 'http://' or 'https://' protocol.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/app/mealie/services/recipe/recipe_data_service.py", line 149, in scrape_image
+    r = await client.get(image_url, headers={"User-Agent": _FIREFOX_UA})
+  File "/opt/pysetup/.venv/lib/python3.10/site-packages/httpx/_client.py", line 1801, in get
+    return await self.request(
+  File "/opt/pysetup/.venv/lib/python3.10/site-packages/httpx/_client.py", line 1574, in request
+    return await self.send(request, auth=auth, follow_redirects=follow_redirects)
+  File "/opt/pysetup/.venv/lib/python3.10/site-packages/httpx/_client.py", line 1661, in send
+    response = await self._send_handling_auth(
+  File "/opt/pysetup/.venv/lib/python3.10/site-packages/httpx/_client.py", line 1689, in _send_handling_auth
+    response = await self._send_handling_redirects(
+  File "/opt/pysetup/.venv/lib/python3.10/site-packages/httpx/_client.py", line 1726, in _send_handling_redirects
+    response = await self._send_single_request(request)
+  File "/opt/pysetup/.venv/lib/python3.10/site-packages/httpx/_client.py", line 1763, in _send_single_request
+    response = await transport.handle_async_request(request)
+  File "/opt/pysetup/.venv/lib/python3.10/site-packages/httpx/_transports/default.py", line 372, in handle_async_request
+    with map_httpcore_exceptions():
+  File "/usr/local/lib/python3.10/contextlib.py", line 153, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/opt/pysetup/.venv/lib/python3.10/site-packages/httpx/_transports/default.py", line 86, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.UnsupportedProtocol: Request URL is missing an 'http://' or 'https://' protocol.
+INFO: 14-Mar-24 16:32:06 	HTTP Request: GET https://www.tine.no/oppskrifter/middag-og-hovedretter/pizza-og-pai/enkel-og-rask-hverdagspizza "HTTP/1.1 200 OK"
+INFO: 14-Mar-24 16:32:06 	Image URL: ['https://www.tine.no/_/recipeimage/w_1080,h_1080,c_fill,x_3285,y_1848,g_xy_center/recipeimage/fuzb5stxs2skncze76rp.jpg', 'https://www.tine.no/_/recipeimage/w_1440,h_1080,c_fill,x_3285,y_1848,g_xy_center/recipeimage/fuzb5stxs2skncze76rp.jpg', 'https://www.tine.no/_/recipeimage/w_1600,h_900,c_fill,x_3285,y_1848,g_xy_center/recipeimage/fuzb5stxs2skncze76rp.jpg']
+INFO: 14-Mar-24 16:32:06 	HTTP Request: HEAD https://www.tine.no/_/recipeimage/w_1080,h_1080,c_fill,x_3285,y_1848,g_xy_center/recipeimage/fuzb5stxs2skncze76rp.jpg "HTTP/1.1 200 OK"
+INFO: 14-Mar-24 16:32:06 	HTTP Request: HEAD https://www.tine.no/_/recipeimage/w_1600,h_900,c_fill,x_3285,y_1848,g_xy_center/recipeimage/fuzb5stxs2skncze76rp.jpg "HTTP/1.1 200 OK"
+INFO: 14-Mar-24 16:32:06 	HTTP Request: HEAD https://www.tine.no/_/recipeimage/w_1440,h_1080,c_fill,x_3285,y_1848,g_xy_center/recipeimage/fuzb5stxs2skncze76rp.jpg "HTTP/1.1 200 OK"
+ERROR: 14-Mar-24 16:32:06 	Fatal Image Request Exception
+Traceback (most recent call last):
+  File "/opt/pysetup/.venv/lib/python3.10/site-packages/httpx/_transports/default.py", line 69, in map_httpcore_exceptions
+    yield
+  File "/opt/pysetup/.venv/lib/python3.10/site-packages/httpx/_transports/default.py", line 373, in handle_async_request
+    resp = await self._pool.handle_async_request(req)
+  File "/opt/pysetup/.venv/lib/python3.10/site-packages/httpcore/_async/connection_pool.py", line 215, in handle_async_request
+    raise UnsupportedProtocol(
+httpcore.UnsupportedProtocol: Request URL is missing an 'http://' or 'https://' protocol.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/app/mealie/services/recipe/recipe_data_service.py", line 149, in scrape_image
+    r = await client.get(image_url, headers={"User-Agent": _FIREFOX_UA})
+  File "/opt/pysetup/.venv/lib/python3.10/site-packages/httpx/_client.py", line 1801, in get
+    return await self.request(
+  File "/opt/pysetup/.venv/lib/python3.10/site-packages/httpx/_client.py", line 1574, in request
+    return await self.send(request, auth=auth, follow_redirects=follow_redirects)
+  File "/opt/pysetup/.venv/lib/python3.10/site-packages/httpx/_client.py", line 1661, in send
+    response = await self._send_handling_auth(
+  File "/opt/pysetup/.venv/lib/python3.10/site-packages/httpx/_client.py", line 1689, in _send_handling_auth
+    response = await self._send_handling_redirects(
+  File "/opt/pysetup/.venv/lib/python3.10/site-packages/httpx/_client.py", line 1726, in _send_handling_redirects
+    response = await self._send_single_request(request)
+  File "/opt/pysetup/.venv/lib/python3.10/site-packages/httpx/_client.py", line 1763, in _send_single_request
+    response = await transport.handle_async_request(request)
+  File "/opt/pysetup/.venv/lib/python3.10/site-packages/httpx/_transports/default.py", line 372, in handle_async_request
+    with map_httpcore_exceptions():
+  File "/usr/local/lib/python3.10/contextlib.py", line 153, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/opt/pysetup/.venv/lib/python3.10/site-packages/httpx/_transports/default.py", line 86, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.UnsupportedProtocol: Request URL is missing an 'http://' or 'https://' protocol.
+INFO: 14-Mar-24 16:33:12 	Recipe Directory Removed: enkel-og-rask-hverdagspizza-1
+INFO: 14-Mar-24 16:33:24 	original.webp minified
+INFO: 14-Mar-24 16:33:24 	Tiny image saved
+INFO: 14-Mar-24 16:59:37 	HTTP Request: GET https://www.tine.no/oppskrifter/middag-og-hovedretter/gronnsaker-og-poteter/lunsj-bowl-med-cottage-cheese "HTTP/1.1 200 OK"
+INFO: 14-Mar-24 16:59:37 	Image URL: ['https://www.tine.no/_/recipeimage/w_1080,h_1080,c_fill,x_1024,y_576,g_xy_center/recipeimage/j9hpumcfm3elpcixxzjo.jpg', 'https://www.tine.no/_/recipeimage/w_1440,h_1080,c_fill,x_1024,y_576,g_xy_center/recipeimage/j9hpumcfm3elpcixxzjo.jpg', 'https://www.tine.no/_/recipeimage/w_1600,h_900,c_fill,x_1024,y_576,g_xy_center/recipeimage/j9hpumcfm3elpcixxzjo.jpg']
+INFO: 14-Mar-24 16:59:38 	HTTP Request: HEAD https://www.tine.no/_/recipeimage/w_1080,h_1080,c_fill,x_1024,y_576,g_xy_center/recipeimage/j9hpumcfm3elpcixxzjo.jpg "HTTP/1.1 200 OK"
+INFO: 14-Mar-24 16:59:38 	HTTP Request: HEAD https://www.tine.no/_/recipeimage/w_1600,h_900,c_fill,x_1024,y_576,g_xy_center/recipeimage/j9hpumcfm3elpcixxzjo.jpg "HTTP/1.1 200 OK"
+INFO: 14-Mar-24 16:59:38 	HTTP Request: HEAD https://www.tine.no/_/recipeimage/w_1440,h_1080,c_fill,x_1024,y_576,g_xy_center/recipeimage/j9hpumcfm3elpcixxzjo.jpg "HTTP/1.1 200 OK"
+ERROR: 14-Mar-24 16:59:38 	Fatal Image Request Exception
+Traceback (most recent call last):
+  File "/opt/pysetup/.venv/lib/python3.10/site-packages/httpx/_transports/default.py", line 69, in map_httpcore_exceptions
+    yield
+  File "/opt/pysetup/.venv/lib/python3.10/site-packages/httpx/_transports/default.py", line 373, in handle_async_request
+    resp = await self._pool.handle_async_request(req)
+  File "/opt/pysetup/.venv/lib/python3.10/site-packages/httpcore/_async/connection_pool.py", line 215, in handle_async_request
+    raise UnsupportedProtocol(
+httpcore.UnsupportedProtocol: Request URL is missing an 'http://' or 'https://' protocol.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/app/mealie/services/recipe/recipe_data_service.py", line 149, in scrape_image
+    r = await client.get(image_url, headers={"User-Agent": _FIREFOX_UA})
+  File "/opt/pysetup/.venv/lib/python3.10/site-packages/httpx/_client.py", line 1801, in get
+    return await self.request(
+  File "/opt/pysetup/.venv/lib/python3.10/site-packages/httpx/_client.py", line 1574, in request
+    return await self.send(request, auth=auth, follow_redirects=follow_redirects)
+  File "/opt/pysetup/.venv/lib/python3.10/site-packages/httpx/_client.py", line 1661, in send
+    response = await self._send_handling_auth(
+  File "/opt/pysetup/.venv/lib/python3.10/site-packages/httpx/_client.py", line 1689, in _send_handling_auth
+    response = await self._send_handling_redirects(
+  File "/opt/pysetup/.venv/lib/python3.10/site-packages/httpx/_client.py", line 1726, in _send_handling_redirects
+    response = await self._send_single_request(request)
+  File "/opt/pysetup/.venv/lib/python3.10/site-packages/httpx/_client.py", line 1763, in _send_single_request
+    response = await transport.handle_async_request(request)
+  File "/opt/pysetup/.venv/lib/python3.10/site-packages/httpx/_transports/default.py", line 372, in handle_async_request
+    with map_httpcore_exceptions():
+  File "/usr/local/lib/python3.10/contextlib.py", line 153, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/opt/pysetup/.venv/lib/python3.10/site-packages/httpx/_transports/default.py", line 86, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.UnsupportedProtocol: Request URL is missing an 'http://' or 'https://' protocol.
+INFO: 14-Mar-24 17:00:09 	original.webp minified
+INFO: 14-Mar-24 17:00:09 	Tiny image saved
+INFO: 14-Mar-24 17:28:15 	locked users reset
+INFO: 14-Mar-24 18:28:15 	locked users reset
+INFO: 14-Mar-24 19:28:15 	locked users reset
+INFO: 14-Mar-24 20:28:15 	locked users reset
+INFO: 14-Mar-24 21:28:15 	locked users reset
+INFO: 14-Mar-24 22:28:15 	locked users reset
