@@ -18,6 +18,8 @@ services:
     environment:
       - AUTO_START_PXE=true # optional, true by default
 
+
+# required or no workey for config
 volumes:
   isos:
     external: true

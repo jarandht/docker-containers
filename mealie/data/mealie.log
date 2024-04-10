@@ -218,3 +218,62 @@ INFO: 14-Mar-24 19:28:15 	locked users reset
 INFO: 14-Mar-24 20:28:15 	locked users reset
 INFO: 14-Mar-24 21:28:15 	locked users reset
 INFO: 14-Mar-24 22:28:15 	locked users reset
+INFO: 26-Mar-24 19:58:09 	Database connection established.
+INFO: 26-Mar-24 19:58:09 	Context impl SQLiteImpl.
+INFO: 26-Mar-24 19:58:09 	Will assume non-transactional DDL.
+INFO: 26-Mar-24 19:58:09 	Checking for migration data fixes
+WARNING: 26-Mar-24 19:58:10 	"get_all" method is deprecated; use "page_all" instead
+INFO: 26-Mar-24 19:58:27 	-----SYSTEM STARTUP----- 
+
+INFO: 26-Mar-24 19:58:27 	------APP SETTINGS------
+INFO: 26-Mar-24 19:58:27 	{
+    "theme": {
+        "light_primary": "#E58325",
+        "light_accent": "#007A99",
+        "light_secondary": "#973542",
+        "light_success": "#43A047",
+        "light_info": "#1976D2",
+        "light_warning": "#FF6D00",
+        "light_error": "#EF5350",
+        "dark_primary": "#E58325",
+        "dark_accent": "#007A99",
+        "dark_secondary": "#973542",
+        "dark_success": "#43A047",
+        "dark_info": "#1976D2",
+        "dark_warning": "#FF6D00",
+        "dark_error": "#EF5350"
+    },
+    "PRODUCTION": true,
+    "BASE_URL": "http://localhost:8080",
+    "STATIC_FILES": "/spa/static",
+    "IS_DEMO": false,
+    "API_PORT": 9000,
+    "API_DOCS": true,
+    "TOKEN_TIME": 48,
+    "LOG_LEVEL": "INFO",
+    "GIT_COMMIT_HASH": "b54cdf642505bcb63384bddcc21f15d751c2f85b",
+    "ALLOW_SIGNUP": false,
+    "SECURITY_MAX_LOGIN_ATTEMPTS": 5,
+    "SECURITY_USER_LOCKOUT_TIME": 24,
+    "DB_ENGINE": "sqlite",
+    "DEFAULT_GROUP": "Home",
+    "SMTP_HOST": null,
+    "SMTP_PORT": "587",
+    "SMTP_FROM_NAME": "Mealie",
+    "SMTP_FROM_EMAIL": null,
+    "SMTP_AUTH_STRATEGY": "TLS",
+    "LDAP_AUTH_ENABLED": false,
+    "LDAP_SERVER_URL": null,
+    "LDAP_TLS_INSECURE": false,
+    "LDAP_TLS_CACERTFILE": null,
+    "LDAP_ENABLE_STARTTLS": false,
+    "LDAP_BASE_DN": null,
+    "LDAP_QUERY_BIND": null,
+    "LDAP_QUERY_PASSWORD": null,
+    "LDAP_USER_FILTER": null,
+    "LDAP_ADMIN_FILTER": null,
+    "LDAP_ID_ATTRIBUTE": "uid",
+    "LDAP_MAIL_ATTRIBUTE": "mail",
+    "LDAP_NAME_ATTRIBUTE": "name",
+    "TESTING": false
+}
