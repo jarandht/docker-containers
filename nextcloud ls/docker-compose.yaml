@@ -1,37 +1,43 @@
-version: "2.1"
+version: "3.1"
 services:
   nextcloud:
     image: lscr.io/linuxserver/nextcloud:latest
     container_name: nextcloud
     environment:
-      - PUID=1000
-      - PGID=1000
       - TZ=Europe/Oslo
+      - PUID=3007
+      - PGID=3007
+      - APACHE_DISABLE_REWRITE_IP=1
+      - TRUSTED_PROXIES=10.99.9.131/24
     volumes:
-      - nextcloud_config:/config
-      - nextcloud_data:/data
+      - TNS_L_DATA:/data
+      - ./config:/config
     ports:
-      - 8020:443
-    restart: unless-stopped
+      - 8010:443
+    restart: always
     networks:
-      - db_network
-  # Database
-  nextcloud-mysql: 
-    image: mysql 
-    restart: always  
-    container_name: nextcloud-mysql 
+      - nextcloud
+
+  mysql:
+    image: mysql
+    restart: always
+    container_name: nextcloud-mysql
     volumes:
-      - db_data:/var/lib/mysql
+      - ./db_data:/var/lib/mysql
     environment:
-      MYSQL_ROOT_PASSWORD: nextcloud
+      MYSQL_ROOT_PASSWORD: ${root_db_pass}
       MYSQL_DATABASE: nextcloud
       MYSQL_USER: nextcloud
-      MYSQL_PASSWORD: nextcloud
+      MYSQL_PASSWORD: ${next_db_pass}
     networks:
-      - db_network
-networks: 
-  db_network:
-volumes: 
-  db_data:
-  nextcloud_data:
-  nextcloud_config:
+      - nextcloud
+
+networks:
+  nextcloud:
+volumes:
+  TNS_L_DATA:
+    driver: local
+    driver_opts:
+      type: nfs
+      o: "addr=10.0.0.199,rw,nfsvers=4"
+      device: ":/mnt/main/nextcloud/data"

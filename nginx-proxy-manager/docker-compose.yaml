@@ -1,0 +1,16 @@
+version: '3.8'
+services:
+  nginx:
+    container_name: nginx-proxy-manager
+    image: 'jc21/nginx-proxy-manager:latest'
+    restart: always
+    ports:
+      - '80:80'
+      - '8010:81'
+      - '443:443'
+    environment:
+      PUID: 1000
+      PGID: 1000
+    volumes:
+      - ./data:/data
+      - ./letsencrypt:/etc/letsencrypt

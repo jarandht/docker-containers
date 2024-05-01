@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  nginx:
+    image: nginx:latest
+    container_name: nginx
+    ports:
+      - "25565:25565"
+      - "19132:19132"
+      - "51820:51820"
+    volumes:
+      - ./nginx:/etc/nginx
+    restart: always

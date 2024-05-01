@@ -1,0 +1,10 @@
+version: '3.3'
+services:
+  handbrake:
+    image: jlesage/handbrake
+    container_name: handbrake
+    ports:
+      - '8050:5800'
+    restart: always
+    volumes:
+      - ./config:/config:rw
