@@ -36,14 +36,14 @@ services:
       # SMTP_USER=
       # SMTP_PASSWORD=
       ALLOW_SIGNUP: true
-      - MAX_WORKERS=1
-      - WEB_CONCURRENCY=1
-      - BASE_URL=https://mealie.cooldomain.com
-      - OIDC_AUTH_ENABLED=true
-      - OIDC_SIGNUP_ENABLED=true
-      - OIDC_CONFIGURATION_URL=https://authentik.cooldomain.com/application/o/mealie-demo-app/.well-known/openid-configuration
-      - OIDC_CLIENT_ID=2iXRBBFGFfzwuZUfKIwmcIUAhoUrwSdMZzRJWW1L
-      - OIDC_AUTO_REDIRECT=true
-      - OIDC_REMEMBER_ME=true
-      - OIDC_USER_GROUP=my_family
-      - OIDC_ADMIN_GROUP=mealie Admins
+      MAX_WORKERS: 1
+      WEB_CONCURRENCY: 1
+      BASE_URL: https://mealie.cooldomain.com
+      OIDC_AUTH_ENABLED: true
+      OIDC_SIGNUP_ENABLED: true
+      OIDC_CONFIGURATION_URL: 
+      OIDC_CLIENT_ID: 
+      OIDC_AUTO_REDIRECT: true
+      OIDC_REMEMBER_ME: true
+      OIDC_USER_GROUP: my_family
+      OIDC_ADMIN_GROUP: mealie Admins
