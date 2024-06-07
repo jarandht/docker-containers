@@ -1,0 +1,29 @@
+version: '3.3'
+services:
+  vaultwarden:
+    restart: always
+    container_name: vaultwarden
+    image: vaultwarden/server:latest
+    ports:
+      - 8050:80
+    volumes:
+      - ./data:/data
+    environment:
+      - SIGNUPS_ALLOWED=false
+      - DOMAIN=https://vaultwarden.local.jarand.site
+      - LOGIN_RATELIMIT_MAX_BURST=10
+      - LOGIN_RATELIMIT_SECONDS=60
+      - ADMIN_RATELIMIT_MAX_BURST=10
+      - ADMIN_RATELIMIT_SECONDS=60
+      - ADMIN_TOKEN=${TOKEN}
+      - SENDS_ALLOWED=true
+      - EMERGENCY_ACCESS_ALLOWED=true
+      - WEB_VAULT_ENABLED=true
+      - SMTP_HOST=smtp.gmail.com
+      - SMTP_FROM=vaultwarden@jarand.site
+      - SMTP_FROM_NAME=Vaultwarden
+      - SMTP_SECURITY=force_tls
+      - SMTP_PORT=465
+      - SMTP_USERNAME=
+      - SMTP_PASSWORD=${SMTP_PASSWORD}
+      - SMTP_AUTH_MECHANISM="Mechanism"
