@@ -1,5 +1,5 @@
 services:
-  dns-server:
+  srv-dns-technitium01:
     container_name: srv-dns-technitium01
     hostname: srv-dns-technitium01
     image: technitium/dns-server:latest
