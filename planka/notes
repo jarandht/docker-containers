@@ -1,0 +1,3 @@
+openssl rand -hex 64
+
+chown -R 1000:1000

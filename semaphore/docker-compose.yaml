@@ -30,7 +30,8 @@ services:
       - SEMAPHORE_ADMIN_EMAIL=
       - SEMAPHORE_ADMIN=admin
       - SEMAPHORE_ACCESS_KEY_ENCRYPTION=${SEMAPHORE_ACCESS_KEY_ENCRYPTION}
-      - ANSIBLE_HOST_KEY_CHECKING=yes
+      - ANSIBLE_HOST_KEY_CHECKING=no
+      - TZ=Europe/Oslo
     volumes:
       - ./inventory/:/inventory:ro
       - ./authorized-keys/:/authorized-keys:ro
