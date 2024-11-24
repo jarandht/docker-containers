@@ -1,2 +1,4 @@
-docker compose up -d
-docker attach minecraft
+# Deployment
+
+docker compose up -d  
+docker attach minecraft  
