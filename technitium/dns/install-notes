@@ -1,3 +1,5 @@
-sudo systemctl stop systemd-resolved
+sudo sed -r -i.orig 's/#?DNSStubListener=yes/DNSStubListener=no/g' /etc/systemd/resolved.conf
 
-sudo systemctl disable systemd-resolved
+sudo sh -c 'rm /etc/resolv.conf && ln -s /run/systemd/resolve/resolv.conf /etc/resolv.conf'
+
+reboot
