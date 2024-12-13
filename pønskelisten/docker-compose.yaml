@@ -1,0 +1,65 @@
+services:
+  db:
+    image: mysql:5.7
+    container_name: poenskelisten-db
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+    networks:
+      - db
+    volumes:
+      - ./db/:/var/lib/mysql/
+
+  poenskelisten:
+    container_name: poenskelisten-app
+    image: aunefyren/poenskelisten:v2.0.9
+    restart: unless-stopped
+    networks:
+      - db
+    depends_on:
+      - db
+    volumes:
+      - ./data/:/app/files/
+    environment:
+      generateinvite: true
+      port: 8080
+      timezone: Europe/Oslo
+      dbip: db
+      dbport: 3306
+      dbname: ${MYSQL_DATABASE}
+      dbusername: ${MYSQL_USER}
+      dbpassword: ${MYSQL_PASSWORD}
+      disablesmtp: true
+      smtphost: smtphost
+      smtpport: 25
+      smtpusername: myusername
+      smtppassword: mypassword
+    labels:
+      - traefik.http.services.poenskelisten.loadbalancer.server.port=8080
+      - traefik.enable=true
+      - traefik-http.routers.poenskelisten.tls=true
+      - traefik.http.routers.poenskelisten.tls.certresolver=cloudflare
+      - traefik.http.routers.poenskelisten.entryPoints=websecure
+      - traefik.http.routers.poenskelisten.rule=Host(`domain.com`)
+
+  # phpmyadmin:
+  #   image: phpmyadmin:latest
+  #   restart: unless-stopped
+  #   environment:
+  #     - PMA_ARBITRARY=1
+  #     - PMA_HOST:ponske 
+  #     - MYSQL_ROOT_PASSWORD:root 
+  #     - TZ=Europe/Oslo 
+  #   container_name: poenskelisten-phpmyadmin
+  #   ports:
+  #     - 80:80
+  #   depends_on:
+  #     - db
+  #   networks:
+  #     - db
+
+networks:
+  db:

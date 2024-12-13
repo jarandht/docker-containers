@@ -1,0 +1,13 @@
+services:
+  wishlist:
+    container_name: wishlist
+    image: ghcr.io/cmintey/wishlist:latest
+    ports:
+      - 3280:3280
+    volumes:
+      - ./uploads:/usr/src/app/uploads  # This is where user image uploads will be stored
+      - ./data:/usr/src/app/data        # This is where the sqlite database will be stored
+    environment:
+      # ORIGIN: https://wishlist.example.com
+      ORIGIN: http://localhost:3280
+      TOKEN_TIME: 72 # hours until signup and password reset tokens expire

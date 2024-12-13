@@ -1,0 +1,28 @@
+---
+version: "3"
+services:
+  christmas-community:
+    image: wingysam/christmas-community
+    volumes:
+      - ./data:/data
+    ports:
+      # If you want to go to localhost:8080 to access Christmas Community,
+      # use - 8080:80 instead of
+      - 80:80
+    environment:
+      SMILE: 'true'
+      TABLE: 'true'
+      PFP: true
+      LANGUAGE: nb-no
+      SITE_TITLE: Ønskeliste
+      SHORT_TITLE: Ønskeliste
+      LISTS_PUBLIC: true
+    restart: always
+
+    Hello, I'm having a problem setting up Netbird with Traefik as a reverse proxy. I was following a tutorial: https://www.youtube.com/watch?v=QQaRB1vL6Q8, and everything went fairly smooth until the final step. When i try to add the first peer, the Netbird CLI gives me the following output:
+2024-08-10T16:02:08+02:00 WARN client/cmd/root.go:238: retrying Login to the Management service in 1.379062667s due to error rpc error: code = Unknown desc = getting device authorization flow info failed with error: failed while getting Management Service public key
+2024-08-10T16:02:10+02:00 WARN client/cmd/root.go:238: retrying Login to the Management service in 1.907972604s due to error rpc error: code = Unknown desc = getting device authorization flow info failed with error: failed while getting Management Service public key
+
+I really don't now what to do, I checked logs of my containers - everything seems to be working fine. My stack is the same as in the video - Traefik, Authentik and Netbird, aside from the fact that I'm running Podman on AlmaLinux with SELinux enabled (i had to do minor tweaks to the docker-compose.yml)
+
+Thanks for help.
