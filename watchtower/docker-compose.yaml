@@ -1,0 +1,11 @@
+services:
+  watchtower:
+    image: ghcr.io/containrrr/watchtower:1.7.1
+    container_name: watchtower
+    environment:
+      WATCHTOWER_MONITOR_ONLY: 'true'
+      WATCHTOWER_NOTIFICATIONS: "msteams"
+      WATCHTOWER_NOTIFICATION_MSTEAMS_HOOK_URL: ""
+      WATCHTOWER_NOTIFICATION_MSTEAMS_USE_LOG_DATA: true
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
