@@ -1,0 +1,18 @@
+services:
+  app:
+    image: roundcube/roundcubemail:1.6.9-fpm-alpine
+    container_name: roundcubemail
+    ports:
+      - "80:80/tcp"
+    environment:
+      ROUNDCUBEMAIL_DEFAULT_HOST: ssl://imap.purelymail.com
+      ROUNDCUBEMAIL_DEFAULT_PORT: 993
+      ROUNDCUBEMAIL_SMTP_SERVER: ssl://smtp.purelymail.com
+      ROUNDCUBEMAIL_SMTP_PORT: 465
+      ROUNDCUBEMAIL_UPLOAD_MAX_FILESIZE: 20M
+      ROUNDCUBEMAIL_DB_TYPE: sqlite
+    volumes:
+      - ./data/html:/var/www/html
+      - ./data/config:/var/roundcube/config
+      - ./data/db:/var/roundcube/db
+      - ./data/tmp:/tmp/roundcube-temp
