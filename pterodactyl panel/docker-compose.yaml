@@ -7,17 +7,21 @@ services:
     ports:
       - 80:80
     environment:
-      CACHE_DRIVER: "redis"
-      SESSION_DRIVER: "redis"
-      QUEUE_DRIVER: "redis"
-      REDIS_HOST: "redis"
-      APP_URL: http://10.10.0.12:80
+      APP_URL: ${app_url}
+
       DB_HOST: mysql
       DB_DATABASE: ${mysql_database}
       DB_USERNAME: ${mysql_user}
       DB_PASSWORD: ${mysql_user_password}
       DB_PORT: 3306
       APP_TIMEZONE: Europe/Oslo
+
+      CACHE_DRIVER: "redis"
+      SESSION_DRIVER: "redis"
+      QUEUE_DRIVER: "redis"
+      REDIS_HOST: "redis"
+      REDIS_PORT: "6379"
+      REDIS_PASSWORD: ${redis_password}
     depends_on:
       - mysql
     volumes:
@@ -29,8 +33,8 @@ services:
       - panel
       
   mysql:
+    image: mariadb:11.6.2
     container_name: mysql
-    image: mariadb:latest
     restart: unless-stopped
     environment:
       MYSQL_ROOT_PASSWORD: ${mysql_root_password}
@@ -43,9 +47,18 @@ services:
       - panel
 
   redis:
-    image: redis:alpine
+    image: redis:7.4.2
     container_name: redis
     restart: unless-stopped
+    command:
+      - /bin/sh
+      - -c
+      - redis-server --requirepass "$${redis_password:?redis_password variable is not set}"
+    env_file:
+      - .env
+    volumes:
+      - ./data/reedis:/var/lib/redis/data
+      - ./data/redis.conf:/usr/local/etc/redis/redis.conf
     networks:
       - panel
 
