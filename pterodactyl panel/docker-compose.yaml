@@ -5,23 +5,19 @@ services:
     container_name: panel
     restart: unless-stopped
     ports:
-      - 8080:80
+      - 80:80
     environment:
-      - CACHE_DRIVER="redis"
-      - SESSION_DRIVER="redis"
-      - QUEUE_DRIVER="redis"
-      - REDIS_HOST="cache"
-      - APP_URL=https://10.10.0.12:8080
-      - DB_HOST=mysql
-      - DB_DATABASE="db"
-      - DB_USERNAME="db"
-      - DB_PASSWORD="db"
-      - DB_PORT=3306
-      - APP_ENV=production
-      - APP_ENVIRONMENT_ONLY=false
-      - APP_TIMEZONE=Europe/Oslo
-      - APP_SERVICE_AUTHOR=noreply@example.com
-      - TRUSTED_PROXIES=*
+      CACHE_DRIVER: "redis"
+      SESSION_DRIVER: "redis"
+      QUEUE_DRIVER: "redis"
+      REDIS_HOST: "redis"
+      APP_URL: http://10.10.0.12:80
+      DB_HOST: mysql
+      DB_DATABASE: ${mysql_database}
+      DB_USERNAME: ${mysql_user}
+      DB_PASSWORD: ${mysql_user_password}
+      DB_PORT: 3306
+      APP_TIMEZONE: Europe/Oslo
     depends_on:
       - mysql
     volumes:
@@ -31,15 +27,16 @@ services:
       - "./data/logs/:/app/storage/logs"
     networks:
       - panel
+      
   mysql:
     container_name: mysql
     image: mariadb:latest
     restart: unless-stopped
     environment:
-      MYSQL_DATABASE: "db"
-      MYSQL_ROOT_PASSWORD: "db"
+      MYSQL_ROOT_PASSWORD: ${mysql_root_password}
+      MYSQL_DATABASE: ${mysql_database}
       MYSQL_USER: ${mysql_user}
-      MYSQL_PASSWORD: "db"
+      MYSQL_PASSWORD: ${mysql_user_password}
     volumes:
       - ./data/db:/var/lib/lysql
     networks:
