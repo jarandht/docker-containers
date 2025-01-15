@@ -1,6 +1,6 @@
 Create first user:
 
-docker-compose run --rm panel php artisan p:user:make
+docker compose run --rm panel php artisan p:user:make
 
 
 Enviorment variables:
