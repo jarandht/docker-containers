@@ -42,7 +42,7 @@ services:
       MYSQL_USER: ${mysql_user}
       MYSQL_PASSWORD: ${mysql_user_password}
     volumes:
-      - ./data/db:/var/lib/lysql
+      - ./data/db:/var/lib/mysql
     networks:
       - panel
 
