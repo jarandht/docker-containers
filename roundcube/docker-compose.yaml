@@ -1,6 +1,6 @@
 services:
   app:
-    image: roundcube/roundcubemail:1.6.9-fpm-alpine
+    image: roundcube/roundcubemail:1.6.9-apache
     container_name: roundcubemail
     ports:
       - "80:80/tcp"
