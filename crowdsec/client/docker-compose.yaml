@@ -1,0 +1,25 @@
+services:
+  crowdsec:
+    image: crowdsecurity/crowdsec:v1.6.4
+    container_name: crowdsec
+    environment:
+      GID: "${GID-1000}"
+      COLLECTIONS: crowdsecurity/traefik crowdsecurity/http-cve crowdsecurity/base-http-scenarios crowdsecurity/sshd crowdsecurity/linux crowdsecurity/appsec-generic-rules crowdsecurity/appsec-virtual-patching crowdsecurity/appsec-crs
+    labels:
+      traefik.enable: false
+    networks:
+      - proxy
+    volumes:
+      - ./acquis.yaml:/etc/crowdsec/acquis.yaml
+      - ./config.yaml:/etc/crowdsec/config.yaml
+      - ./crowdsec/data:/var/lib/crowdsec/data
+      - ./crowdsec/crowdsec/etc:/etc/crowdsec
+      - ./crowdsec/log:/var/log/auth.log:ro
+      - ./log:/var/log/traefik/:ro
+    expose:
+      - 8080 # http api for bouncers
+networks:
+  proxy:
+    driver: bridge
+volumes:
+  log:

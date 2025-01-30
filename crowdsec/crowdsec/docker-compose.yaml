@@ -1,0 +1,18 @@
+services:
+  crowdsec:
+    image: crowdsecurity/crowdsec:v1.6.4
+    container_name: crowdsec
+    environment:
+      GID: "${GID-1000}"
+      COLLECTIONS: crowdsecurity/traefik crowdsecurity/http-cve crowdsecurity/base-http-scenarios crowdsecurity/sshd crowdsecurity/linux crowdsecurity/appsec-crs
+    volumes:
+      - ./acquis.yaml:/etc/crowdsec/acquis.yaml
+      - ./crowdsec/data:/var/lib/crowdsec/data
+      - ./crowdsec/crowdsec/etc:/etc/crowdsec
+      - ./crowdsec/log:/var/log/auth.log:ro
+    ports:
+      - 8080:8080
+    expose:
+      - 8080 # http api for bouncers
+      - 6060 # metrics endpoint for prometheus
+      - 7422 # appsec waf endpoint
