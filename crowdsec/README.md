@@ -1,15 +1,6 @@
-1.  removing the crowdsec_service section
+cscli machines add agent --password agent -f filename
 
-    auto_registration:
-      enabled: true
-      token: "32  characters token"
-      allowed_ranges:
-        - X.X.X.X/24
-
-
-cscli lapi register --machine MyMachineName --url <lapi_url>
-2.  remove the api.server
-
+https://hub.docker.com/r/crowdsecurity/crowdsec
 
 https://docs.crowdsec.net/u/user_guides/multiserver_setup/
 

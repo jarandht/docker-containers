@@ -1,0 +1,52 @@
+sudo apt install keepalived -y
+
+sudo nano /etc/keepalived/keepalived.conf
+
+
+vrrp_instance VI_1 {
+  state MASTER
+  interface XXX
+  virtual_router_id 55
+  priority 150
+  advert_int 1
+  unicast_src_ip 10.10.0.12
+  unicast_peer {
+    10.10.0.13
+  }
+
+  authentication {
+    auth_type PASS
+    auth_pass C3P9K9gc
+  }
+
+  virtual_ipaddress {
+    10.10.0.254/24
+  }
+}
+
+vrrp_instance VI_1 {
+  state BACKUP
+  interface XXX
+  virtual_router_id 55
+  priority 100
+  advert_int 1
+  unicast_src_ip 10.10.0.13
+  unicast_peer {
+    10.10.0.12
+  }
+
+  authentication {
+    auth_type PASS
+    auth_pass C3P9K9gc
+  }
+
+  virtual_ipaddress {
+    10.10.0.254/24
+  }
+}
+
+sudo ufw allow from XXX to 224.0.0.18
+
+sudo systemctl start keepalived
+
+sudo systemctl enable --now keepalived.service
