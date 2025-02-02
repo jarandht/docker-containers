@@ -1,8 +1,7 @@
-version: '3.3'
 services:
   cloudflared:
     container_name: cloudflared
-    image: cloudflare/cloudflared:latest
+    image: cloudflare/cloudflared: #latest statick version or "latest" to run latest image
     restart: unless-stopped
     command: tunnel run
     environment:
