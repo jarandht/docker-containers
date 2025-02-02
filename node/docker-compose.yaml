@@ -1,6 +1,6 @@
 services:
   frontend: 
-    image: node:YOUR NODE VERSION
+    image: node:latest
     restart: unless-stopped  
     container_name: app
     volumes:
