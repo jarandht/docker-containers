@@ -9,7 +9,9 @@ services:
       COLLECTIONS: crowdsecurity/traefik crowdsecurity/http-cve crowdsecurity/base-http-scenarios crowdsecurity/sshd crowdsecurity/linux crowdsecurity/appsec-crs
 
       # BOUNCERS
-      BOUNCER_KEY_<name>: SECRET
+      BOUNCER_KEY_<name>: SECRET 
+      # Be carefull about naming
+      # "docker compose logs -f crowdsec | grep bouncer" to check that bouncer actualy gets created
     volumes:
       - ./acquis.yaml:/etc/crowdsec/acquis.yaml
       - ./crowdsec/data:/var/lib/crowdsec/data/
