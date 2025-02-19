@@ -3,6 +3,7 @@ services:
     container_name: hbbs
     image: rustdesk/rustdesk-server:VERSION
     command: hbbs -r jht-srv-app-rustdesk.lan:21117 -k ${KEY}
+    volumes:
       - ./data:/root
     network_mode: "host"
 
