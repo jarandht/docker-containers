@@ -1,0 +1,43 @@
+http:
+  routers:
+    app:
+      entryPoints:
+        - "websecure"
+      rule: "Host(`test.lab.jarand.site`)"
+      middlewares:
+        - crowdsec
+      tls:
+        certResolver: cloudflare
+      service: app
+
+  services:
+    app:
+      loadBalancer:
+        servers:
+          - url: "http://10.10.0.103"
+
+  middlewares:
+    crowdsec:
+      plugin:
+        crowdsec-bouncer:
+          enabled: true
+          logLevel: DEBUG
+          updateIntervalSeconds: 60
+          updateMaxFailure: 0
+          defaultDecisionSeconds: 60
+          httpTimeoutSeconds: 10
+          crowdsecMode: live
+          crowdsecAppsecEnabled: false
+          crowdsecAppsecPath: "/"
+          crowdsecAppsecFailureBlock: true
+          crowdsecAppsecUnreachableBlock: true
+          crowdsecAppsecBodyLimit: 10485760
+          crowdsecLapiKey: pXR/VED452xSx/7qYtWyGIBC/fmD5v5AKUHI+aE/PIc
+          crowdsecLapiScheme: http
+          crowdsecLapiHost: crowdsec:8080
+          crowdsecLapiPath: "/"
+          crowdsecLapiTLSInsecureVerify: false
+          crowdsecCapiScenarios:
+            - crowdsecurity/http-path-traversal-probing
+            - crowdsecurity/http-xss-probing
+            - crowdsecurity/http-generic-bf

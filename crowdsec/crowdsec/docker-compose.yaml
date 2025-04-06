@@ -1,0 +1,25 @@
+services:
+  crowdsec:
+    image: crowdsecurity/crowdsec:v1.6.4
+    container_name: crowdsec
+    environment:
+      TZ: Europe/Oslo
+      GID: "${GID-1000}"
+      DISABLE_AGENT: true
+      COLLECTIONS: crowdsecurity/traefik crowdsecurity/http-cve crowdsecurity/base-http-scenarios crowdsecurity/sshd crowdsecurity/linux crowdsecurity/appsec-crs
+
+      # BOUNCERS
+      BOUNCER_KEY_<name>: SECRET 
+      # Be carefull about naming
+      # "docker compose logs -f crowdsec | grep bouncer" to check that bouncer actualy gets created
+    volumes:
+      - ./acquis.yaml:/etc/crowdsec/acquis.yaml
+      - ./crowdsec/data:/var/lib/crowdsec/data/
+      - ./crowdsec/crowdsec/:/etc/crowdsec/
+      - ./crowdsec/log:/var/log/auth.log:ro
+    ports:
+      - 8080:8080
+    expose:
+      - 8080 # http api for bouncers
+      - 6060 # metrics endpoint for prometheus
+      - 7422 # appsec waf endpoint

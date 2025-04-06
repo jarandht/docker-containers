@@ -1,0 +1,14 @@
+filenames:
+ - /var/log/auth.log
+ - /var/log/syslog
+labels:
+  type: syslog
+---
+poll_without_inotify: false
+---
+listen_addr: 0.0.0.0:7422
+appsec_config: crowdsecurity/appsec-default
+name: myAppSecComponent
+source: appsec
+labels:
+  type: appsec

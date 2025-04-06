@@ -1,0 +1,23 @@
+services:
+  hbbs:
+    container_name: hbbs
+    image: rustdesk/rustdesk-server:VERSION
+    command: hbbs #-r jht-srv-app-rustdesk.lan:21117 -k ${KEY}
+    volumes:
+      - ./data:/root
+    network_mode: "host"
+
+    depends_on:
+      - hbbr
+    restart: unless-stopped
+
+  hbbr:
+    container_name: hbbr
+    image: rustdesk/rustdesk-server:VERSION
+    command: hbbr #-k ${KEY}
+    volumes:
+      - ./data:/root
+    network_mode: "host"
+    restart: unless-stopped
+
+# Uncomment coments after first funn (after key is generated) and fill out .env file

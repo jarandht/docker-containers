@@ -1,4 +1,4 @@
-FROM node:18-slim
+FROM node:YOUR NODE VERSION
 WORKDIR /data
 COPY package*.json ./
 COPY startup.sh /startup.sh

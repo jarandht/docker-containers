@@ -1,0 +1,41 @@
+services:
+  traefik:
+    image: docker.io/library/traefik:v3.3.2
+    container_name: traefik
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - /run/docker.sock:/run/docker.sock:ro
+      - ./traefik/certs/:/var/traefik/certs/:rw
+      - ./traefik/config.yaml:/config.yml:ro
+      - ./traefik/traefik.yaml:/etc/traefik/traefik.yml:ro
+      - log:/var/log/traefik/
+    environment:
+      - CF_DNS_API_TOKEN=${CF_DNS_API_TOKEN}
+    networks:
+      - proxy
+    restart: unless-stopped
+
+  crowdsec:
+    image: crowdsecurity/crowdsec:v1.6.4
+    container_name: crowdsec
+    environment:
+      TZ: Europe/Oslo
+      GID: "${GID-1000}"
+      DISABLE_LOCAL_API: true
+      LOCAL_API_URL: "http://srv-app-crowdsec:8080"
+    labels:
+      traefik.enable: false
+    volumes:
+      - ./acquis.yaml:/etc/crowdsec/acquis.yaml
+      - ./crowdsec/data:/var/lib/crowdsec/data
+      - ./crowdsec/crowdsec/etc:/etc/crowdsec
+      - ./crowdsec/log:/var/log/auth.log:ro
+      - log:/var/log/traefik/:ro
+
+networks:
+  proxy:
+
+volumes:
+  log:
