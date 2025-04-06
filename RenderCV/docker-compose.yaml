@@ -1,0 +1,8 @@
+services:
+  rendercv:
+    container_name: rendercv
+    image: docker.io/rendercv/rendercv:latest
+    stdin_open: true
+    tty: true
+    volumes:
+      - ./rendercv:/rendercv
