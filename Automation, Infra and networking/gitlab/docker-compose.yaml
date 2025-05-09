@@ -4,7 +4,7 @@ services:
     container_name: gitlab
     restart: unless-stopped
     environment:
-      TZ: Europe/Osl
+      TZ: Europe/Oslo
       GITLAB_OMNIBUS_CONFIG: |
         external_url ''
         nginx['ssl_certificate'] = ""
