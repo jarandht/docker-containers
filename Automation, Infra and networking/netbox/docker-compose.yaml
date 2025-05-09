@@ -1,10 +1,25 @@
 services:
+  traefik:
+    image: traefik:v3.1.7
+    container_name: traefik
+    restart: unless-stopped
+    ports:
+      - 443:443
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ./traefik.yml:/traefik.yml:ro
+      - ./log:/var/log/traefik:ro
+      - ./certs:/certs:ro
+    networks:
+      - netbox-proxy
+    environment:
+      LOG_LEVEL: debug
   netbox: &netbox
     restart: unless-stopped
-    image: netbox:latest-plugins
+    image: netboxcommunity/netbox:v4.2.8
     build:
       context: .
-      dockerfile: Dockerfile-Plugins
+      dockerfile: Dockerfile
     depends_on:
       - postgres
       - redis
@@ -21,6 +36,7 @@ services:
       - ./netbox-media-files:/opt/netbox/netbox/media:rw
       - ./netbox-reports-files:/opt/netbox/netbox/reports:rw
       - ./netbox-scripts-files:/opt/netbox/netbox/scripts:rw
+      - ./configuration.py:/opt/netbox/netbox/config/configuration.py
     networks:
       - netbox
       - netbox-proxy
@@ -112,4 +128,3 @@ services:
 networks:
   netbox:
   netbox-proxy:
-    external: true

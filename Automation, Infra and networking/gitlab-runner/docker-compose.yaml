@@ -1,0 +1,12 @@
+version: '3.6'
+
+services:
+  gitlab-runner:
+    image: gitlab/gitlab-runner:latest
+    container_name: gitlab-runner
+    restart: always
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /cache:/cache
+      - ./data:/etc/gitlab-runner
+    privileged: true
