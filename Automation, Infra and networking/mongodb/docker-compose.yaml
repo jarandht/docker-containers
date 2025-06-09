@@ -1,17 +1,12 @@
-version: '3.3'
 services:
-  mongodb:
-    image: mongodb/mongodb-community-server
-    restart: always
-    container_name: db
+  db:
+    container_name: efscalculator-db
+    image: mongo:8.0.6
+    restart: unless-stopped
     ports:
       - 27017:27017
+    env_file: 
+      - .env
     volumes:
-      - ./db_data:/data
-    environment:
-      - ME_CONFIG_MONGODB_ADMINUSERNAME=
-      - ME_CONFIG_MONGODB_ADMINPASSWORD=
-    networks:
-      - db
-networks:
-  db:
+      - ./db:/data/db
+      - ./init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js
