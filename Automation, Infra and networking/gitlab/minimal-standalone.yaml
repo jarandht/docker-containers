@@ -1,0 +1,21 @@
+services:
+  gitlab:
+    image: gitlab/gitlab-ce:YOUR IMAGE See https://hub.docker.com/r/gitlab/gitlab-ce/tags
+    container_name: gitlab
+    restart: unless-stopped
+    ports:
+      - 443:443
+    environment:
+      TZ: Europe/Oslo
+      GITLAB_OMNIBUS_CONFIG: |
+        external_url ''
+        nginx['ssl_certificate'] = "/etc/gitlab/ssl/fullchain.pem"
+        nginx['ssl_certificate_key'] = "/etc/gitlab/ssl/privkey.pem"
+
+        gitlab_rails['gitlab_signup_enabled'] = false
+        gitlab_rails['gitlab_shell_ssh_port'] = 0
+    volumes:
+      - /mnt/gitlab/config:/etc/gitlab
+      - /mnt/gitlab/logs:/var/log/gitlab
+      - /mnt/gitlab/data:/var/opt/gitlab
+      - ./ssl:/etc/gitlab/ssl/
